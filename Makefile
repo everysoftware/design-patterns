@@ -6,4 +6,4 @@ format:
 PHONY: lint
 lint:
 	ruff check patterns tests --fix
-	mypy patterns tests --ignore-missing-imports
+	mypy patterns tests
