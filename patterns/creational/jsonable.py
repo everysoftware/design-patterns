@@ -19,4 +19,4 @@ class Jsonable(ABC):
             raise ValueError("Data must be a valid JSON string")
         if not isinstance(dct, dict):
             raise ValueError("JSON must represent an object")
-        return cls(**dct)  # type: ignore[arg-type]
+        return cls(**dct)  # noqa

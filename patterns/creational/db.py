@@ -4,7 +4,7 @@ from patterns.creational.connections import Connection, MockConnection
 
 
 class Database:
-    _connection: Connection = None
+    _connection: Connection | None = None
 
     def __init__(self, db_url: str) -> None:
         self.db_url = db_url
@@ -17,5 +17,3 @@ class Database:
         if not self._connection:
             self._connection = MockConnection()
         return self._connection
-
-

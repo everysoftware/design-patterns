@@ -1,7 +1,13 @@
 from abc import ABC, abstractmethod
-from typing import assert_never
 
-from patterns.creational.products import Apple, Orange, Product, Adviser, AppleAdviser, OrangeAdviser
+from patterns.creational.products import (
+    Apple,
+    Orange,
+    Product,
+    Adviser,
+    AppleAdviser,
+    OrangeAdviser,
+)
 
 
 class ProductSimpleFactory:
@@ -28,6 +34,7 @@ class ProductSimpleFactory:
 
 def simple_factory_make_product(name: str) -> Product:
     """Or you can have a function that does the same thing:"""
+    product: Product
     match name:
         case "apple":
             product = Apple()
@@ -36,7 +43,7 @@ def simple_factory_make_product(name: str) -> Product:
             product = Orange()
             # ... do some more stuff
         case _:
-            assert_never(name)
+            raise ValueError(f"Unknown product: {name}")
     return product
 
 
@@ -45,6 +52,7 @@ class ProductFactoryMethod(ABC):
     Factory Method is generally used when you have some generic processing in a class,
     but want to vary which kind of fruit you actually use. So:
     """
+
     @abstractmethod
     def make(self) -> Product: ...
 
@@ -69,6 +77,7 @@ class FactoryProvider(ABC):
     and have some common base classes. Here's a vaguely fruit-related example. The use case here is that we want to make sure that we don't accidentally use an OrangeAdviser on an Apple.
     As long as we get our Maker and Adviser from the same factory, they will match.
     """
+
     @abstractmethod
     def get_maker(self) -> ProductFactoryMethod: ...
 

@@ -8,11 +8,11 @@ class ProductShelfBuilder:
     """
 
     def __init__(self) -> None:
-        self.products = []
+        self.products: list[Product] = []
 
     def add(self, product: Product) -> None:
         self.products.append(product)
 
     def build(self, category: str) -> ProductShelf:
-        self.products.sort()
+        self.products.sort(key=lambda p: p.name)
         return ProductShelf(category, self.products)

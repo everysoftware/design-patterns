@@ -1,11 +1,13 @@
 import uuid
 from abc import ABC, abstractmethod
-from typing import Any, assert_never
+from typing import Any
 
 
 class IServer(ABC):
     @abstractmethod
-    def dispatch(self, request_type: str, *args: Any, **kwargs: Any) -> Any: ...
+    def dispatch(
+        self, request_type: str, *args: Any, **kwargs: Any
+    ) -> Any: ...
 
 
 def get_id() -> str:
@@ -23,7 +25,7 @@ class Server(IServer):
             case "get_user":
                 response = self._get_user(*args, **kwargs)
             case _:
-                assert_never(request_type)
+                raise ValueError(f"Unknown request type: {request_type}")
         return response
 
     def _post_user(self, name: str) -> str:

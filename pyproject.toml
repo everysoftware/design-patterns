@@ -12,7 +12,26 @@ python = "^3.12"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.7.1"
 pytest = "^8.3.3"
+mypy = "^1.13.0"
+pre-commit = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+fix = true
+indent-width = 4
+line-length = 79
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+strict = true
+pretty = true
+
+[[tool.mypy.overrides]]
+module = "*.*"
+ignore_missing_imports = true

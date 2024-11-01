@@ -1,4 +1,4 @@
-from typing import Self, Any, ClassVar
+from typing import Any
 
 from patterns.creational.db import Database
 
@@ -11,9 +11,9 @@ class Monostate(type):
     The Monostate pattern is a variation of the Singleton pattern where all instances share the same state.
     """
 
-    _shared_state: ClassVar[dict[str, Any] | None] = None
+    _shared_state: dict[str, Any] | None = None
 
-    def __call__(cls: type[Self], *args: Any, **kwargs: Any) -> Self:
+    def __call__(cls, *args: Any, **kwargs: Any) -> Any:
         obj = super().__call__(*args, **kwargs)
         if cls._shared_state is None:
             cls._shared_state = obj.__dict__

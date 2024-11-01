@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 
 class IService(ABC):
     @abstractmethod
-    def receive(self, message: str) -> str: ...
+    def receive(self, message: str) -> None: ...
 
     @abstractmethod
-    def send(self, message: str, to: str) -> str: ...
+    def send(self, message: str, to: str) -> None: ...
 
 
 class IBroker(ABC):
@@ -21,7 +21,9 @@ class IBroker(ABC):
     def register(self, name: str, service: IService) -> None: ...
 
     @abstractmethod
-    def propagate(self, from_service: str, message: str, to_service: str) -> None: ...
+    def propagate(
+        self, from_service: str, message: str, to_service: str
+    ) -> None: ...
 
 
 class Service(IService):
@@ -49,8 +51,12 @@ class Broker(IBroker):
         self.services[name] = service
         print(f"Broker: Registered {name}")
 
-    def propagate(self, from_service: str, message: str, to_service: str):
-        print(f"Broker: Forwarding message from {from_service} to {to_service}")
+    def propagate(
+        self, from_service: str, message: str, to_service: str
+    ) -> None:
+        print(
+            f"Broker: Forwarding message from {from_service} to {to_service}"
+        )
         if to_service in self.services:
             self.services[to_service].receive(message)
         else:

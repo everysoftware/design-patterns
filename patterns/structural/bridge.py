@@ -41,7 +41,9 @@ class Device(ABC):
     def __init__(self, os: OperatingSystem) -> None:
         self.os = os
 
+    @abstractmethod
     def power_on(self) -> str: ...
+    @abstractmethod
     def power_off(self) -> str: ...
 
 

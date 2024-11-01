@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import assert_never
 
 
 class CoordinateProvider(ABC):
@@ -14,13 +13,14 @@ class GeolocationAPI:
             case "Moscow":
                 return "37.618423, 55.751244"
             case _:
-                assert_never(city)
+                raise ValueError(f"Unknown city: {city}")
 
 
 class GeoAdapter(CoordinateProvider):
     """
     Adapter (Wrapper, Translator) is a structural design pattern that allows objects with incompatible interfaces to work together.
     """
+
     def __init__(self, api: GeolocationAPI):
         self.api = api
 

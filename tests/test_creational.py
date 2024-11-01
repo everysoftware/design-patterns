@@ -7,7 +7,10 @@ from patterns.creational.db import (
 from patterns.creational.monostate import DatabaseMonostate
 from patterns.creational.multiton import DatabaseMultiton
 from patterns.creational.pool import ConnectionPool, EmptyPoolError
-from patterns.creational.singleton import DatabaseInheritedSingleton, DatabaseMetaSingleton
+from patterns.creational.singleton import (
+    DatabaseInheritedSingleton,
+    DatabaseMetaSingleton,
+)
 
 
 @pytest.mark.parametrize(

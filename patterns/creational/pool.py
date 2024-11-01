@@ -11,7 +11,7 @@ class EmptyPoolError(Exception):
 
 class Pool(ABC):
     @abstractmethod
-    def connect(self) -> Connection | None: ...
+    def connect(self) -> Connection: ...
 
     @abstractmethod
     def disconnect(self, connection: Connection) -> None: ...
@@ -34,7 +34,7 @@ class ConnectionPool(Pool):
     """
 
     def __init__(self, connection_class: type[Connection], pool_size: int = 5):
-        self.pool = queue.Queue(maxsize=pool_size)
+        self.pool: queue.Queue[Connection] = queue.Queue(maxsize=pool_size)
         self.connection_class = connection_class
 
         # Fill the pool with connections
@@ -42,23 +42,21 @@ class ConnectionPool(Pool):
             conn = connection_class()
             self.pool.put(conn)
 
-    def connect(self) -> Connection | None:
+    def connect(self) -> Connection:
         try:
             connection = self.pool.get_nowait()
-            connection.in_use = True
             return connection
         except queue.Empty:
             raise EmptyPoolError from None
 
     def disconnect(self, connection: Connection) -> None:
-        connection.in_use = False
         self.pool.put(connection)
 
     def dispose(self) -> None:
         while True:
             try:
                 conn = self.pool.get_nowait()
-                conn.close()
+                conn.disconnect()
             except queue.Empty:
                 break
 

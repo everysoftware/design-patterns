@@ -27,7 +27,7 @@ class Screen:
 
 class Speaker:
     @staticmethod
-    def play_audio(audio_data: Any):
+    def play_audio(audio_data: Any) -> str:
         return f"Playing audio {audio_data}"
 
 

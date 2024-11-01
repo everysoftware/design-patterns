@@ -1,14 +1,4 @@
-from abc import abstractmethod, ABC
-
-
-class IDatabase(ABC):
-    @abstractmethod
-    def get(self, id: int) -> str: ...
-
-
-class Database(IDatabase):
-    def get(self, id: int) -> str:
-        return "data"
+from patterns.structural.db import IDatabase, Database
 
 
 class CachedDatabase(IDatabase):
@@ -18,10 +8,13 @@ class CachedDatabase(IDatabase):
     """
 
     def __init__(self) -> None:
-        self.cache = {}
+        self.cache: dict[int, str] = {}
         self._proxied = Database()
 
     def get(self, id: int) -> str:
         if id not in self.cache:
             self.cache[id] = self._proxied.get(id)
         return self.cache[id]
+
+    def set(self, id: int, data: str) -> str:
+        return self._proxied.set(id, data)

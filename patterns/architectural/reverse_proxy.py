@@ -19,13 +19,15 @@ class ReverseProxy(IServer):
         response = self._forward_request(request_type, *args, **kwargs)
         return self._forward_response(response)
 
-    def _forward_request(self, request_type: str, *args: Any, **kwargs: Any) -> Any:
+    def _forward_request(
+        self, request_type: str, *args: Any, **kwargs: Any
+    ) -> Any:
         print(
             f"Proxy: Forwarding {request_type} request with args {args}, kwargs {kwargs}"
         )
         return self.server.dispatch(request_type, *args, **kwargs)
 
     @staticmethod
-    def _forward_response(response: Any):
+    def _forward_response(response: Any) -> Any:
         print(f"Proxy: Forwarding response {response} back to client")
         return response
