@@ -1,5 +1,4 @@
 import logging
-import time
 
 from _pytest.logging import LogCaptureFixture
 
@@ -8,8 +7,11 @@ from patterns.structural.db import Database
 from patterns.structural.decorator import (
     CacheDecorator,
     measure_time,
-    log_calls,
+    tracer,
 )
+from patterns.structural.flyweight import FlyweightFactory
+from patterns.structural.locator import say_hello
+from patterns.structural.marker import loggable
 
 
 def test_cache_decorator() -> None:
@@ -23,31 +25,31 @@ def test_cache_decorator() -> None:
 
 def test_measure_time(caplog: LogCaptureFixture) -> None:
     @measure_time()
-    def sleep(seconds: float) -> None:
-        time.sleep(seconds)
+    def plus(x: int, y: int) -> int:
+        return x + y
 
     with caplog.at_level(logging.INFO):
-        sleep(0.1)
+        assert plus(1, 2) == 3
     assert len(caplog.records) == 1
 
 
-def test_log_calls(caplog: LogCaptureFixture) -> None:
-    @log_calls
-    def sleep(seconds: float) -> None:
-        time.sleep(seconds)
+def test_tracer(caplog: LogCaptureFixture) -> None:
+    @tracer
+    def plus(x: int, y: int) -> int:
+        return x + y
 
     with caplog.at_level(logging.INFO):
-        sleep(0.1)
+        assert plus(1, 2) == 3
     assert len(caplog.records) == 2
 
 
-def test_log_calls_parametrized(caplog: LogCaptureFixture) -> None:
-    @log_calls(after=False)
-    def sleep(seconds: float) -> None:
-        time.sleep(seconds)
+def test_tracer_parametrized(caplog: LogCaptureFixture) -> None:
+    @tracer(after=False)
+    def plus(x: int, y: int) -> int:
+        return x + y
 
     with caplog.at_level(logging.INFO):
-        sleep(0.1)
+        assert plus(1, 2) == 3
     assert len(caplog.records) == 1
 
 
@@ -66,3 +68,26 @@ def test_composite() -> None:
     logging.info(root.as_string())
 
     assert root.children == [folder1, folder2]
+
+
+def test_locator() -> None:
+    assert say_hello(1) == "Hello, John!"
+
+
+def test_flyweight() -> None:
+    flyweight = FlyweightFactory()
+    soldier1 = flyweight.get_character("soldier")
+    soldier1.render("red", 10, 20)
+
+    soldier2 = flyweight.get_character("soldier")
+    soldier2.render("blue", 30, 40)
+
+    assert soldier1 is soldier2
+
+
+def test_marker() -> None:
+    @loggable
+    def plus(x: int, y: int) -> int:
+        return x + y
+
+    assert loggable.is_marked(plus)

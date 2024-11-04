@@ -16,6 +16,10 @@ class Connection(ABC):
     def execute_query(self, query: str) -> Mapping[str, Any]: ...
 
     def __enter__(self) -> Self:
+        """
+        RAII (Resource Acquisition Is Initialization) is a programming idiom that states that, using certain software mechanisms,
+        the acquisition of a resource is inextricably linked with initialization, and the release is linked with the destruction of the object.
+        """
         self.connect()
         return self
 

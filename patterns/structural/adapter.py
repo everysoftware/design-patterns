@@ -25,8 +25,6 @@ class GeoAdapter(CoordinateProvider):
         self.api = api
 
     def get(self, city: str) -> tuple[float, float]:
-        # Get string "longitude, latitude"
         data = self.api.fetch_location(city)
-        # Разделяем строку и конвертируем в tuple (latitude, longitude)
         lon, lat = map(float, data.split(", "))
-        return lat, lon  # Приводим к формату (lat, lon)
+        return lat, lon

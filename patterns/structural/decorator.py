@@ -67,7 +67,7 @@ def measure_time[**P, T](
     return decorator
 
 
-class CallLogger[**P, T]:
+class Tracer[**P, T]:
     func: Callable[P, T]
 
     def __init__(
@@ -91,7 +91,7 @@ _T = TypeVar("_T")
 
 
 @overload
-def log_calls(
+def tracer(
     func: Callable[_P, _T],
     *,
     before: bool = True,
@@ -100,21 +100,21 @@ def log_calls(
 
 
 @overload
-def log_calls(
+def tracer(
     *,
     before: bool = True,
     after: bool = True,
 ) -> Callable[[Callable[_P, _T]], Callable[_P, _T]]: ...
 
 
-def log_calls(
+def tracer(
     func: Callable[_P, _T] | None = None,
     *,
     before: bool = True,
     after: bool = True,
 ) -> Callable[_P, _T] | Callable[[Callable[_P, _T]], Callable[_P, _T]]:
     def decorator(_func: Callable[_P, _T]) -> Callable[_P, _T]:
-        return CallLogger(_func, before=before, after=after)
+        return Tracer(_func, before=before, after=after)
 
     if func is not None:
         return decorator(func)

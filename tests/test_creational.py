@@ -4,6 +4,7 @@ from patterns.creational.connections import MockConnection
 from patterns.creational.db import (
     Database,
 )
+from patterns.creational.di_example import say_hello
 from patterns.creational.monostate import DatabaseMonostate
 from patterns.creational.multiton import DatabaseMultiton
 from patterns.creational.pool import ConnectionPool, EmptyPoolError
@@ -62,3 +63,7 @@ def test_pool() -> None:
         assert not conn2.is_connected
         assert not conn.is_connected
     assert pool.empty()
+
+
+def test_di() -> None:
+    assert say_hello(1) == "Hello, John!"
