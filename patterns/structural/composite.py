@@ -1,3 +1,8 @@
+"""
+Composite is a structural design pattern compose objects into tree structures to represent part-whole hierarchies.
+Composite lets clients treat individual objects and compositions of objects uniformly.
+"""
+
 from abc import ABC, abstractmethod
 
 
@@ -17,11 +22,6 @@ class File(Component):
 
 # Composite
 class Directory(Component):
-    """
-    Composite design pattern compose objects into tree structures to represent part-whole hierarchies.
-    Composite lets clients treat individual objects and compositions of objects uniformly.
-    """
-
     def __init__(self, name: str):
         self.name = name
         self.children: list[Component] = []

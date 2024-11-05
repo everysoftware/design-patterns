@@ -1,3 +1,8 @@
+"""
+Creational Method is a creational design pattern that is simple wrapper method over the item constructor call.
+The create method helps isolate any changes to the product construction from the main code.
+"""
+
 import json
 from abc import ABC
 from typing import Self
@@ -9,10 +14,6 @@ class Jsonable(ABC):
 
     @classmethod
     def from_json(cls, data: str) -> Self:
-        """
-        Creational Method is a simple wrapper method over the item constructor call.
-        The create method helps isolate any changes to the product construction from the main code.
-        """
         try:
             dct = json.loads(data)
         except json.JSONDecodeError:

@@ -1,3 +1,7 @@
+"""
+Singleton is a creational design pattern that ensures that a class has only one instance and provides a global point of access to it.
+"""
+
 from __future__ import annotations
 
 import logging
@@ -9,12 +13,8 @@ from patterns.creational.db import Database
 logger = logging.getLogger(__name__)
 
 
-# https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Metaprogramming.html
+# Read more about metaprogramming: https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Metaprogramming.html
 class InheritedSingleton(ABC):
-    """
-    Singleton is a creational design pattern that ensures that a class has only one instance and provides a global point of access to it.
-    """
-
     _instance: ClassVar[InheritedSingleton | None] = None
 
     def __new__(cls, *args: Any, **kwargs: Any) -> InheritedSingleton:
@@ -48,7 +48,7 @@ class MetaSingleton(type):
         """
         Called after the class is created.
 
-        The primary difference is that when overriding __new__() you can change things like the ‘name’, ‘bases’ and ‘namespace’ arguments before you call the super constructor
+        The primary difference is that when overriding __new__() you can change things like the ‘name’, ‘bases’ and ‘namespace’ arguments before you call the super constructor,
         and it will have an effect, but doing the same thing in __init__() you won’t get any results from the constructor call.
         """
         logger.info(

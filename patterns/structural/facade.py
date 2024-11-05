@@ -1,3 +1,10 @@
+"""
+Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other
+complex set of classes.
+
+This pattern lives up to its name, as the facade is the outer, front part of a building.
+"""
+
 from typing import Any
 
 
@@ -32,12 +39,6 @@ class Speaker:
 
 
 class MediaFacade:
-    """
-    Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
-
-    This pattern lives up to its name, as the facade is the outer, front part of a building.
-    """
-
     def __init__(self) -> None:
         self.file_loader = FileLoader()
         self.video_decoder = VideoDecoder()

@@ -1,3 +1,16 @@
+"""
+Inversion of Control (IoC) is a general principle in which dependency management is delegated to a system or external
+component, rather than being performed by the object itself. In this approach, an object does not create its
+dependencies itself, but receives them from the outside. IoC allows for reduced coupling between components and
+simplifies testing and replacing individual parts of the system.
+
+Service Locator is a pattern that creates a single place to register and look up dependencies (services).
+When an object needs a dependency, it calls the Service Locator, which returns the required service initialized before.
+
+Service locator considered an antipattern because it hides the dependencies of the class, making it harder to understand and test.
+It also makes the class harder to reuse, as it is tightly coupled to the Service Locator.
+"""
+
 from typing import MutableMapping, Any
 
 
@@ -8,18 +21,6 @@ class UserManager:
 
 
 class ServiceLocator:
-    """
-    Inversion of Control (IoC) is a general principle in which dependency management is delegated to a system or external component, rather than being performed by the object itself.
-    In this approach, an object does not create its dependencies itself, but receives them from the outside, which is often implemented through DI.
-    IoC allows for reduced coupling between components and simplifies testing and replacing individual parts of the system.
-
-    Service Locator is a pattern that creates a single place to register and look up dependencies (services).
-    When an object needs a dependency, it calls the Service Locator, which returns the required service initialized before.
-
-    Service locator considered an antipattern because it hides the dependencies of the class, making it harder to understand and test.
-    It also makes the class harder to reuse, as it is tightly coupled to the Service Locator.
-    """
-
     def __init__(self) -> None:
         self.services: MutableMapping[type[Any], Any] = {}
 

@@ -1,3 +1,13 @@
+"""
+Bridge is a structural design pattern that decouples abstraction and implementation, allowing them to be modified independently.
+This is especially useful when new variations of an abstraction and its implementation are introduced,
+and it is necessary to avoid "cartesian" (or "combinatorial") class explosion.
+
+In this example, the Device abstraction is decoupled from the OperatingSystem implementation.
+If we add a new device (e.g. Tablet) or a new OS (e.g. macOS), we can easily create new classes without modifying existing code.
+Otherwise, we would have to create a new class for each combination of device and OS.
+"""
+
 from abc import abstractmethod, ABC
 
 
@@ -28,16 +38,6 @@ class LinuxOS(OperatingSystem):
 
 # Abstraction
 class Device(ABC):
-    """
-    Bridge is a structural design pattern that decouples abstraction and implementation, allowing them to be modified independently.
-    This is especially useful when new variations of an abstraction and its implementation are introduced,
-    and it is necessary to avoid "cartesian" (or "combinatorial") class explosion.
-
-    In this example, the Device abstraction is decoupled from the OperatingSystem implementation.
-    If we add a new device (e.g. Tablet) or a new OS (e.g. macOS), we can easily create new classes without modifying existing code.
-    Otherwise, we would have to create a new class for each combination of device and OS.
-    """
-
     def __init__(self, os: OperatingSystem) -> None:
         self.os = os
 

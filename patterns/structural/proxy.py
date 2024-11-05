@@ -1,12 +1,13 @@
+"""
+Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object.
+A proxy controls access to the original object, allowing you to perform something either before or after the request
+gets through to the original object.
+"""
+
 from patterns.structural.db import IDatabase, Database
 
 
 class CachedDatabase(IDatabase):
-    """
-    Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object,
-    allowing you to perform something either before or after the request gets through to the original object.
-    """
-
     def __init__(self) -> None:
         self.cache: dict[int, str] = {}
         self._proxied = Database()

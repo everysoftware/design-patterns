@@ -1,5 +1,6 @@
 """
-Attach additional responsibilities to an object dynamically keeping the same interface. Decorators provide a flexible alternative to subclassing for extending functionality.
+Decorator is a structural design pattern that attach additional responsibilities to an object dynamically keeping
+the same interface. Decorators provide a flexible alternative to subclassing for extending functionality.
 
 A Decorator is always passed its decorated object. A Proxy might create it himself, or he might have it injected.
 """

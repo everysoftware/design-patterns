@@ -1,3 +1,9 @@
+"""
+Delegate is a structural design pattern is used to delegate responsibility for a task from one object to another.
+This pattern helps create a flexible architecture where tasks can be delegated between objects while maintaining low
+coupling and high modularity.
+"""
+
 from abc import abstractmethod, ABC
 
 
@@ -17,11 +23,6 @@ class LaserPrinter(IPrinter):
 
 
 class Printer:
-    """
-    Delegate pattern is used to delegate responsibility for a task from one object to another.
-    This pattern helps create a flexible architecture where tasks can be delegated between objects while maintaining low coupling and high modularity.
-    """
-
     def __init__(self, delegate: IPrinter):
         self.delegate = delegate
 

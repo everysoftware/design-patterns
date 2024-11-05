@@ -1,3 +1,7 @@
+"""
+Adapter (Wrapper, Translator) is a structural design pattern that allows objects with incompatible interfaces to work together.
+"""
+
 from abc import ABC, abstractmethod
 
 
@@ -17,10 +21,6 @@ class GeolocationAPI:
 
 
 class GeoAdapter(CoordinateProvider):
-    """
-    Adapter (Wrapper, Translator) is a structural design pattern that allows objects with incompatible interfaces to work together.
-    """
-
     def __init__(self, api: GeolocationAPI):
         self.api = api
 

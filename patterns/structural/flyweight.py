@@ -1,6 +1,7 @@
 """
 Flyweight is a structural pattern used to efficiently manage large numbers of small objects.
-The basic idea is to separate an object's state into internal and external, minimizing memory usage by sharing common data.
+The basic idea is to separate an object's state into internal and external, minimizing memory usage by
+sharing common data.
 """
 
 from typing import MutableMapping
