@@ -11,8 +11,9 @@ repository contains a collection of design patterns, principles, and best practi
 3. Structural Patterns
 4. Behavioral Patterns
 5. Architectural Patterns
-6. Infrastructure Patterns
-7. Concurrency Patterns
+6. Backend Patterns
+7. Infrastructure Patterns
+8. Concurrency Patterns
 
 ## Principles of Design
 
