@@ -1,7 +1,7 @@
 import logging
 import uuid
 from abc import ABC, abstractmethod
-from typing import Any, Literal, MutableMapping
+from typing import Any, Literal, MutableMapping, cast
 
 logger = logging.getLogger(__name__)
 
@@ -50,8 +50,8 @@ class Client:
 
     def add_user(self, name: str) -> str:
         user_id = self.server.dispatch("post_user", name)
-        return user_id
+        return cast(str, user_id)
 
     def get_user(self, user_id: str) -> str:
         user_name = self.server.dispatch("get_user", user_id)
-        return user_name
+        return cast(str, user_name)
