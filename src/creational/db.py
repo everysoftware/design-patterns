@@ -1,6 +1,6 @@
 from typing import Any
 
-from patterns.creational.connections import Connection, MockConnection
+from src.creational.connections import Connection, MockConnection
 
 
 class Database:

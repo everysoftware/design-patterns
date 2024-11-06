@@ -4,7 +4,7 @@ A proxy controls access to the original object, allowing you to perform somethin
 gets through to the original object.
 """
 
-from patterns.structural.db import IDatabase, Database
+from src.structural.db import IDatabase, Database
 
 
 class CachedDatabase(IDatabase):

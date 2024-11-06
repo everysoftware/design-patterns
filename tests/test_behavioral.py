@@ -1,32 +1,32 @@
-from patterns.behavioral.command import Bank, Account
-from patterns.behavioral.cor import LeaveRequest, Manager, Director, TeamLead
-from patterns.behavioral.interpreter import Subtract, Number, Add
-from patterns.behavioral.iterator import NameCollection
-from patterns.behavioral.mediator import ChatRoom, Participant
-from patterns.behavioral.memento import Object, Caretaker
-from patterns.behavioral.observer import (
+from src.behavioral.command import Bank, Account
+from src.behavioral.cor import LeaveRequest, Manager, Director, TeamLead
+from src.behavioral.interpreter import Subtract, Number, Add
+from src.behavioral.iterator import NameCollection
+from src.behavioral.mediator import ChatRoom, Participant
+from src.behavioral.memento import Object, Caretaker
+from src.behavioral.observer import (
     TemperatureSensor,
     AirConditioner,
     Heater,
 )
-from patterns.behavioral.retry import retry
-from patterns.behavioral.servant import Circle, Square, Mover
-from patterns.behavioral.session import CloudClient
-from patterns.behavioral.state import (
+from src.behavioral.retry import retry
+from src.behavioral.servant import Circle, Square, Mover
+from src.behavioral.session import CloudClient
+from src.behavioral.state import (
     ATM,
     NoCard,
     HasCard,
     RIGHT_PIN,
     CorrectPin,
 )
-from patterns.behavioral.strategy import (
+from src.behavioral.strategy import (
     Product,
     Order,
     RegularShipping,
     OrderService,
 )
-from patterns.behavioral.template_method import Tea, Coffee
-from patterns.behavioral.visitor import Car, Bike, MaintenanceVisitor
+from src.behavioral.template_method import Tea, Coffee
+from src.behavioral.visitor import Car, Bike, MaintenanceVisitor
 
 
 def test_command() -> None:

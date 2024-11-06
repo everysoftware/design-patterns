@@ -13,7 +13,7 @@ from typing import Callable, Literal, overload, TypeVar
 
 from typing_extensions import ParamSpec
 
-from patterns.structural.db import IDatabase
+from src.structural.db import IDatabase
 
 logger = logging.getLogger(__name__)
 

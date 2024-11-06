@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from patterns.creational.jsonable import Jsonable
-from patterns.creational.prototype import Cloneable
+from src.creational.jsonable import Jsonable
+from src.creational.prototype import Cloneable
 
 
 class Product(Jsonable, Cloneable, ABC):

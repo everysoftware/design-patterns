@@ -8,7 +8,7 @@ import logging
 from abc import ABC
 from typing import ClassVar, Any, MutableMapping
 
-from patterns.creational.db import Database
+from src.creational.db import Database
 
 logger = logging.getLogger(__name__)
 

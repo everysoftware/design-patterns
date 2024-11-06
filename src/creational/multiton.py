@@ -6,7 +6,7 @@ encountered in the previous section effectively.
 
 from typing import Any
 
-from patterns.creational.db import Database
+from src.creational.db import Database
 
 
 class Multiton(type):

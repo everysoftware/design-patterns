@@ -8,7 +8,7 @@ multiple instances, but they share the same state (data).
 
 from typing import Any
 
-from patterns.creational.db import Database
+from src.creational.db import Database
 
 
 class Monostate(type):

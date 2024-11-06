@@ -1,9 +1,9 @@
 PHONY: format
 format:
-	ruff format patterns tests
+	ruff format src tests
 
 
 PHONY: lint
 lint:
-	ruff check patterns tests --fix
-	mypy patterns tests
+	ruff check src tests --fix
+	mypy src tests

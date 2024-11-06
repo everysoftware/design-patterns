@@ -1,14 +1,14 @@
 import pytest
 
-from patterns.creational.connections import MockConnection
-from patterns.creational.db import (
+from src.creational.connections import MockConnection
+from src.creational.db import (
     Database,
 )
-from patterns.creational.di_example import say_hello
-from patterns.creational.monostate import DatabaseMonostate
-from patterns.creational.multiton import DatabaseMultiton
-from patterns.creational.pool import ConnectionPool, EmptyPoolError
-from patterns.creational.singleton import (
+from src.creational.di_example import say_hello
+from src.creational.monostate import DatabaseMonostate
+from src.creational.multiton import DatabaseMultiton
+from src.creational.pool import ConnectionPool, EmptyPoolError
+from src.creational.singleton import (
     DatabaseInheritedSingleton,
     DatabaseMetaSingleton,
 )

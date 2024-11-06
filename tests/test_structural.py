@@ -2,16 +2,16 @@ import logging
 
 from _pytest.logging import LogCaptureFixture
 
-from patterns.structural.composite import Directory, File
-from patterns.structural.db import Database
-from patterns.structural.decorator import (
+from src.structural.composite import Directory, File
+from src.structural.db import Database
+from src.structural.decorator import (
     CacheDecorator,
     measure_time,
     tracer,
 )
-from patterns.structural.flyweight import FlyweightFactory
-from patterns.structural.locator import say_hello
-from patterns.structural.marker import loggable
+from src.structural.flyweight import FlyweightFactory
+from src.structural.locator import say_hello
+from src.structural.marker import loggable
 
 
 def test_cache_decorator() -> None:

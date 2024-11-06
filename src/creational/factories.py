@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from patterns.creational.products import (
+from src.creational.products import (
     Apple,
     Orange,
     Product,

@@ -14,7 +14,7 @@ import queue
 from abc import abstractmethod, ABC
 from typing import Self, Any
 
-from patterns.creational.connections import Connection
+from src.creational.connections import Connection
 
 
 class EmptyPoolError(Exception):

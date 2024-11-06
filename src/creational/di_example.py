@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from patterns.creational.di import Container
+from src.creational.di import Container
 
 
 class IUserManager(ABC):
