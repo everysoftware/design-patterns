@@ -1,17 +1,17 @@
+"""
+Reverse Proxy is a structural design pattern that serves as an intermediary between client and server, similar to a traditional proxy.
+While a standard proxy forwards client requests to various servers on behalf of the clients, a reverse proxy does the opposite:
+it receives requests from clients and forwards them to the appropriate servers.
+
+!!! Forward Proxy — Server which sits in front of clients. Reverse Proxy — Server that sits before the servers.
+"""
+
 from typing import Any
 
 from patterns.architectural.client_server import IServer
 
 
 class ReverseProxy(IServer):
-    """
-    Reverse Proxy is a structural design pattern that serves as an intermediary between client and server, similar to a traditional proxy.
-    While a standard proxy forwards client requests to various servers on behalf of the clients, a reverse proxy does the opposite:
-    it receives requests from clients and forwards them to the appropriate servers.
-
-    !!! Forward Proxy — Server which sits in front of clients. Reverse Proxy — Server that sits before the servers.
-    """
-
     def __init__(self, server: IServer) -> None:
         self.server = server
 

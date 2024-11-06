@@ -1,8 +1,6 @@
 """
 The Broker pattern is a microservice pattern. Its main goal is to organize and simplify interactions between different components of the system by using an intermediary
 that manages communication. The broker helps structure the application architecture by providing centralized management of interactions and message routes between services.
-
-Broker is like bidirectional proxy.
 """
 
 from abc import ABC, abstractmethod

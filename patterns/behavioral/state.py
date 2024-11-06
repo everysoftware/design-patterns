@@ -17,10 +17,21 @@ RIGHT_PIN: Final[int] = 1234
 
 
 class ATMContext(ABC):
-    cash: int
+    @abstractmethod
+    def set_cash(self, cash: int) -> None: ...
+    @abstractmethod
+    def get_cash(self) -> int: ...
+    @abstractmethod
+    def insert_card(self) -> str: ...
+    @abstractmethod
+    def enter_pin(self, pin: int) -> str: ...
+    @abstractmethod
+    def request_cash(self, amount: int) -> str: ...
 
     @abstractmethod
     def set_state(self, state: ATMState) -> None: ...
+    @abstractmethod
+    def get_state(self) -> ATMState: ...
 
 
 class ATMState(ABC):
@@ -70,10 +81,11 @@ class CorrectPin(ATMState):
         return "PIN already entered."
 
     def request_cash(self, amount: int) -> str:
-        if amount > self.context.cash:
+        cash = self.context.get_cash()
+        if amount > cash:
             self.context.set_state(NoCard(self.context))
             return "Not enough cash."
-        self.context.cash -= amount
+        self.context.set_cash(cash - amount)
         self.context.set_state(NoCard(self.context))
         return f"{amount} cash received."
 
@@ -85,6 +97,15 @@ class ATM(ATMContext):
 
     def set_state(self, new_state: ATMState) -> None:
         self.state = new_state
+
+    def get_state(self) -> ATMState:
+        return self.state
+
+    def set_cash(self, cash: int) -> None:
+        self.cash = cash
+
+    def get_cash(self) -> int:
+        return self.cash
 
     def insert_card(self) -> str:
         return self.state.insert_card()

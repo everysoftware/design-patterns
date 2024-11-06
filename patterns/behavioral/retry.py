@@ -1,5 +1,5 @@
 """
-The Retry pattern is a behavioral design pattern used to handle temporary failures or errors in the execution of
+Retry pattern is a behavioral design pattern used to handle temporary failures or errors in the execution of
 an operation. Instead of immediately terminating with an error, the Retry pattern involves retrying the operation
 several times at intervals until success is achieved or a specified number of attempts have been exhausted.
 """
