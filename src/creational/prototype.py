@@ -2,7 +2,13 @@
 Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes.
 Simply put, it is a pattern of creating an object by cloning another object instead of creating it through a constructor.
 
-The Prototype pattern is available in Python out of the box with a copy module:
+Use:
+* When creating new objects is more complex or costly than copying existing ones. Cloning can be more efficient if significant resources are needed.
+* For managing various objects with minor differences. Instead of creating multiple classes, you can clone and modify prototypes.
+* For dynamic configurations where you need to create objects at runtime. You can clone a base configuration and adjust it as necessary.
+* Can lower initialization costs, as cloning is often faster than building a new object from scratch, especially if initialization is resource-intensive.
+
+Prototype pattern is available in Python out of the box with a copy module:
 
 copy.copy() - Shallow copy
 A shallow copy replicates the top-level structure of an object but does not create copies of its nested objects.

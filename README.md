@@ -10,10 +10,11 @@ repository contains a collection of design patterns, principles, and best practi
 2. Creational Patterns
 3. Structural Patterns
 4. Behavioral Patterns
-5. Architectural Patterns
-6. Backend Patterns
+5. Enterprise Patterns
+6. Architectural Approaches
 7. Infrastructure Patterns
-8. Concurrency Patterns
+8. Microservices Patterns
+9. Concurrency Patterns
 
 ## Principles of Design
 
@@ -29,3 +30,121 @@ repository contains a collection of design patterns, principles, and best practi
 | 8  | [CQS]()            | Command Query Separation                                                                             |
 | 9  | [GRASP]()          | General Responsibility Assignment Software Patterns                                                  |
 | 10 | [12 Factor App]()  | Methodology for building SaaS applications                                                           |
+
+## Creational Patterns
+
+| #  | Pattern                  | Description                                                                                                                                     |
+|----|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Creational Method]()    | Simple wrapper method over the item constructor call                                                                                            |
+| 2  | [Simple Factory]()       | Define a class for creating objects without subclassing                                                                                         |
+| 3  | [Factory Method]()       | Define an interface for creating an object, but let subclasses decide which class to instantiate                                                |
+| 4  | [Abstract Factory]()     | Provide an interface for creating families of related or dependent objects without specifying their concrete classes                            |
+| 5  | [Builder]()              | Separate the construction of a complex object from its representation, allowing the same construction process to create various representations |
+| 6  | [Prototype]()            | Creating an object by cloning another object instead of creating it through a constructor to avoid costly creation steps                        |
+| 7  | [Singleton]()            | Ensure a class has only one instance and provide a global point of access to it                                                                 |
+| 8  | [Multiton]()             | Ensure a class has named instances, and provide a global point of access to them                                                                |
+| 9  | [Monostate]()            | Ensure that all instances of a class share the same state                                                                                       |
+| 10 | [Lazy Initialization]()  | Delay the creation of an object, the calculation of a value, or some other expensive process until the first time it is needed                  |
+| 11 | [RAII]()                 | Ensure resources are properly acquired and released                                                                                             |
+| 12 | [Object Pool]()          | Reuse and share objects that are expensive to create                                                                                            |
+| 13 | [Dependency Injection]() | A class accepts the objects it requires from an injector instead of creating the objects directly                                               |
+
+## Structural Patterns
+
+| #  | Pattern             | Description                                                                                                                                                           |
+|----|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Adapter]()         | Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces |
+| 2  | [Bridge]()          | Decouple an abstraction from its implementation so that the two can vary independently                                                                                |
+| 3  | [Composite]()       | Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly       |
+| 4  | [Decorator]()       | Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality                     |
+| 5  | [Facade]()          | Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use                     |
+| 6  | [Flyweight]()       | Use sharing to support large numbers of fine-grained objects efficiently                                                                                              |
+| 7  | [Proxy]()           | Provide a surrogate or placeholder for another object to control access to it                                                                                         |
+| 8  | [Service Locator]() | Provide a centralized registry for obtaining services without the need for hard-coded references to their implementations                                             |
+| 9  | [Marker]()          | Add a special marker interface to a class to provide metadata about the class                                                                                         |
+| 10 | [Mixin]()           | Add functionality to a class by subclassing                                                                                                                           |
+| 11 | [Delegate]()        | Pass on the responsibility for a task to another class                                                                                                                |
+
+## Behavioral Patterns
+
+| #  | Pattern                     | Description                                                                                                                                                                                                       |
+|----|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Chain of Responsibility]() | Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it |
+| 2  | [Command]()                 | Encapsulate a request as an object, thereby allowing for parameterization of clients with different requests, queuing of requests, and logging of requests                                                        |
+| 3  | [Interpreter]()             | Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language                                                           |
+| 4  | [Iterator]()                | Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation                                                                                           |
+| 5  | [Mediator]()                | Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly                                                     |
+| 6  | [Memento]()                 | Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later                                                                        |
+| 7  | [Observer]()                | Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically                                                                  |
+| 8  | [State]()                   | Allow an object to alter its behavior when its internal state changes. The object will appear to change its class                                                                                                 |
+| 9  | [Strategy]()                | Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients                                                                   |
+| 10 | [Template Method]()         | Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure        |
+| 11 | [Visitor]()                 | Represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates                          |
+| 12 | [Null Object]()             | Provide an object as a surrogate for the lack of an object of a given type. Null Object provides intelligent do-nothing behavior, hiding the details from its collaborators                                       |
+| 13 | [Retry]()                   | Retry a failed operation a certain number of times with a certain delay between retries                                                                                                                           |
+| 14 | [Servant]()                 | Create a class that performs specific actions for a group of other classes without being part of them                                                                                                             |
+| 15 | [Session]()                 | Define an object that acts as a container for storing data or state required to perform various operations within a single session                                                                                |
+
+## Enterprise patterns
+
+| #  | Pattern                  | Description                                                                                                                                                                     |
+|----|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Domain Model]()         | An object model of the domain that incorporates both behavior and data                                                                                                          |
+| 2  | [Data Transfer Object]() | An object that carries data between processes. The data transfer object is not tied to any specific operation and does not have any behavior                                    |
+| 3  | [Active Record]()        | An object that wraps a row in a database table or view, encapsulates the database access, and adds domain logic on that data                                                    |
+| 4  | [Data Mapper]()          | A layer of Mappers that moves data between objects and a database while keeping them independent of each other                                                                  |
+| 5  | [Data Access Object]()   | An object that provides an abstract interface to some type of database or other persistence mechanism                                                                           |
+| 6  | [Repository]()           | Mediate between the domain and data mapping layers using a collection-like interface for accessing domain objects                                                               |
+| 7  | [Specification]()        | Recombinable business logic in a boolean fashion. Specification is a pattern that allows you to combine rules to create more complex rules, which you can use to filter objects |
+| 8  | [Query Object]()         | Encapsulate a query as an object, allowing for easy query construction, execution, and reuse                                                                                    |
+| 9  | [Identity Map]()         | Ensure that each object gets loaded only once by keeping every loaded object in a map. Looks up objects using the map when referring to them                                    |
+| 10 | [Unit of Work]()         | Maintain a list of objects affected by a business transaction and coordinates the writing out of changes and the resolution of concurrency problems                             |
+| 11 | [Service Layer]()        | Define an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response                             |
+| 12 | [Materialized View]()    | Store the results of a database query as a physical table to improve performance                                                                                                |
+| 13 | [Index Table]()          | Store the results of a database query as an index table to improve performance                                                                                                  |
+
+## Architectural Approaches
+
+| #  | Pattern                     | Description                                                                                                                   |
+|----|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Monolithic Architecture]() | A single-tiered software application in which different components combined into a single program running as a single process |
+| 2  | [Microservices]()           | Architectural style that structures an application as a collection of small autonomous services                               |
+| 3  | [Serverless]()              | Architectural style that allows you to build and run applications and services without having to manage infrastructure        |
+| 4  | [Event-Driven]()            | Architectural style that produces, detects, consumes, and reacts to events in a system                                        |
+| 5  | [Service-Oriented]()        | Architectural style that structures an application as a collection of loosely coupled services                                |
+| 6  | [MVC]()                     | Architectural pattern that separates an application into three main components: Model, View, and Controller                   |
+| 7  | [Onion]()                   | Architectural pattern that layers an application by wrapping it with layers of abstraction                                    |
+| 8  | [Hexagonal]()               | Architectural pattern that structures an application around its core business logic                                           |
+| 9  | [Clean Architecture]()      | Architectural pattern that separates concerns into layers, with dependencies pointing towards the center                      |
+| 10 | [CQRS]()                    | Architectural pattern that separates read and write operations for a data store                                               |
+| 11 | [Event Sourcing]()          | Architectural pattern that logs all changes to an application's state as a sequence of events                                 |
+| 12 | [Domain-Driven Design]()    | Architectural pattern that focuses on the core domain and domain logic                                                        |
+
+## Infrastructure Patterns
+
+| #  | Pattern               | Description                                                                                               |
+|----|-----------------------|-----------------------------------------------------------------------------------------------------------|
+| 1  | [Reverse Proxy]()     | Act as an intermediary for requests from clients seeking resources from servers                           |
+| 2  | [Load Balancer]()     | Distribute incoming network traffic across multiple servers to ensure that no single server is overworked |
+| 3  | [API Gateway]()       | Aggregate multiple services into a single API                                                             |
+| 4  | [Retry]()             | Retry a failed operation a certain number of times with a certain delay between retries                   |
+| 5  | [Timeout]()           | Limit the time a process or a thread is allowed to run                                                    |
+| 6  | [Rate Limiting]()     | Control the rate of requests sent or received by an API                                                   |
+| 7  | [Caching]()           | Store data in a cache to reduce the number of requests to an external service                             |
+| 8  | [Sharding]()          | Partition a database into smaller, faster, and more easily managed parts                                  |
+| 9  | [Leader Election]()   | Choose a leader from a group of distributed nodes                                                         |
+| 10 | [Health Check]()      | Monitor the health of a service or a system                                                               |
+| 11 | [Service Discovery]() | Automatically locate services in a distributed system                                                     |
+| 12 | [Circuit Breaker]()   | Detect failures and encapsulate the logic of preventing a failure from constantly recurring               |
+| 13 | [Broker]()            | Act as an intermediary for messages between two applications                                              |
+| 14 | [Sidecar]()           | Extend and enhance the functionality of an application without affecting the application itself           |
+| 15 | [Bulkhead]()          | Isolate elements of an application into pools so that if one fails, the others will continue to function  |
+
+# Microservices Patterns
+
+| # | Pattern                       | Description                                                                                  |
+|---|-------------------------------|----------------------------------------------------------------------------------------------|
+| 1 | [SAGA]()                      | A sequence of local transactions where each transaction updates data within a single service |
+| 2 | [2PC]()                       | A distributed transaction that ensures all-or-nothing semantics for a transaction            |
+| 3 | [Transactional Outbox]()      | A pattern that ensures exactly-once delivery of messages                                     |
+| 4 | [Event-driven architecture]() | A pattern that produces, detects, consumes, and reacts to events in a system                 |
