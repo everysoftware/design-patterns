@@ -90,18 +90,19 @@ repository contains a collection of design patterns, principles, and best practi
 | #  | Pattern                  | Description                                                                                                                                                                     |
 |----|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | [Domain Model]()         | An object model of the domain that incorporates both behavior and data                                                                                                          |
-| 2  | [Data Transfer Object]() | An object that carries data between processes. The data transfer object is not tied to any specific operation and does not have any behavior                                    |
+| 2  | [Data Mapper]()          | A layer of Mappers that moves data between objects and a database while keeping them independent of each other                                                                  |
 | 3  | [Active Record]()        | An object that wraps a row in a database table or view, encapsulates the database access, and adds domain logic on that data                                                    |
-| 4  | [Data Mapper]()          | A layer of Mappers that moves data between objects and a database while keeping them independent of each other                                                                  |
-| 5  | [Data Access Object]()   | An object that provides an abstract interface to some type of database or other persistence mechanism                                                                           |
-| 6  | [Repository]()           | Mediate between the domain and data mapping layers using a collection-like interface for accessing domain objects                                                               |
-| 7  | [Specification]()        | Recombinable business logic in a boolean fashion. Specification is a pattern that allows you to combine rules to create more complex rules, which you can use to filter objects |
-| 8  | [Query Object]()         | Encapsulate a query as an object, allowing for easy query construction, execution, and reuse                                                                                    |
+| 4  | [Data Access Object]()   | An object that provides an abstract interface to some type of database or other persistence mechanism                                                                           |
+| 5  | [Value Object]()         | An object that contains attributes but has no conceptual identity. They should be treated as immutable                                                                          |
+| 6  | [Aggregate]()            | A collection of objects that are bound together by a root entity, ensuring that changes to the root propagate to the entire collection                                          |
+| 7  | [Repository]()           | Mediate between the domain and data mapping layers using a collection-like interface for accessing domain objects                                                               |
+| 8  | [Specification]()        | Recombinable business logic in a boolean fashion. Specification is a pattern that allows you to combine rules to create more complex rules, which you can use to filter objects |
 | 9  | [Identity Map]()         | Ensure that each object gets loaded only once by keeping every loaded object in a map. Looks up objects using the map when referring to them                                    |
 | 10 | [Unit of Work]()         | Maintain a list of objects affected by a business transaction and coordinates the writing out of changes and the resolution of concurrency problems                             |
 | 11 | [Service Layer]()        | Define an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response                             |
-| 12 | [Materialized View]()    | Store the results of a database query as a physical table to improve performance                                                                                                |
-| 13 | [Index Table]()          | Store the results of a database query as an index table to improve performance                                                                                                  |
+| 12 | [Data Transfer Object]() | An object that carries data between processes. The data transfer object is not tied to any specific operation and does not have any behavior                                    |
+| 13 | [Materialized View]()    | Store the results of a database query as a physical table to improve performance                                                                                                |
+| 14 | [Index Table]()          | Store the results of a database query as an index table to improve performance                                                                                                  |
 
 ## Architectural Approaches
 
