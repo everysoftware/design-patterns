@@ -12,9 +12,7 @@ repository contains a collection of design patterns, principles, and best practi
 4. Behavioral Patterns
 5. Enterprise Patterns
 6. Architectural Approaches
-7. Infrastructure Patterns
-8. Microservices Patterns
-9. Concurrency Patterns
+7. Microservices Patterns
 
 ## Principles of Design
 
@@ -106,46 +104,41 @@ repository contains a collection of design patterns, principles, and best practi
 
 ## Architectural Approaches
 
-| #  | Pattern                     | Description                                                                                                                   |
-|----|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| 1  | [Monolithic Architecture]() | A single-tiered software application in which different components combined into a single program running as a single process |
-| 2  | [Microservices]()           | Architectural style that structures an application as a collection of small autonomous services                               |
-| 3  | [Serverless]()              | Architectural style that allows you to build and run applications and services without having to manage infrastructure        |
-| 4  | [Event-Driven]()            | Architectural style that produces, detects, consumes, and reacts to events in a system                                        |
-| 5  | [Service-Oriented]()        | Architectural style that structures an application as a collection of loosely coupled services                                |
-| 6  | [MVC]()                     | Architectural pattern that separates an application into three main components: Model, View, and Controller                   |
-| 7  | [Onion]()                   | Architectural pattern that layers an application by wrapping it with layers of abstraction                                    |
-| 8  | [Hexagonal]()               | Architectural pattern that structures an application around its core business logic                                           |
-| 9  | [Clean Architecture]()      | Architectural pattern that separates concerns into layers, with dependencies pointing towards the center                      |
-| 10 | [CQRS]()                    | Architectural pattern that separates read and write operations for a data store                                               |
-| 11 | [Event Sourcing]()          | Architectural pattern that logs all changes to an application's state as a sequence of events                                 |
-| 12 | [Domain-Driven Design]()    | Architectural pattern that focuses on the core domain and domain logic                                                        |
+| #  | Pattern                       | Description                                                                                                                   |
+|----|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| 1  | [Monolithic Architecture]()   | A single-tiered software application in which different components combined into a single program running as a single process |
+| 2  | [Microservices]()             | Architectural style that structures an application as a collection of small autonomous services                               |
+| 3  | [Serverless]()                | Architectural style that allows you to build and run applications and services without having to manage infrastructure        |
+| 4  | [Event-Driven]()              | Architectural style that produces, detects, consumes, and reacts to events in a system                                        |
+| 5  | [Service-Oriented]()          | Architectural style that structures an application as a collection of loosely coupled services                                |
+| 6  | [MVC]()                       | Architectural pattern that separates an application into three main components: Model, View, and Controller                   |
+| 7  | [Onion]()                     | Architectural pattern that layers an application by wrapping it with layers of abstraction                                    |
+| 8  | [Hexagonal]()                 | Architectural pattern that structures an application around its core business logic                                           |
+| 9  | [Clean Architecture]()        | Architectural pattern that separates concerns into layers, with dependencies pointing towards the center                      |
+| 10 | [CQRS]()                      | Architectural pattern that separates read and write operations for a data store                                               |
+| 11 | [Event Sourcing]()            | Architectural pattern that logs all changes to an application's state as a sequence of events                                 |
+| 12 | [Domain-Driven Design]()      | Architectural pattern that focuses on the core domain and domain logic                                                        |
+| 13 | [Event-driven architecture]() | A pattern that produces, detects, consumes, and reacts to events in a system                                                  |
 
-## Infrastructure Patterns
+## Microservices Patterns
 
-| #  | Pattern               | Description                                                                                               |
-|----|-----------------------|-----------------------------------------------------------------------------------------------------------|
-| 1  | [Reverse Proxy]()     | Act as an intermediary for requests from clients seeking resources from servers                           |
-| 2  | [Load Balancer]()     | Distribute incoming network traffic across multiple servers to ensure that no single server is overworked |
-| 3  | [API Gateway]()       | Aggregate multiple services into a single API                                                             |
-| 4  | [Retry]()             | Retry a failed operation a certain number of times with a certain delay between retries                   |
-| 5  | [Timeout]()           | Limit the time a process or a thread is allowed to run                                                    |
-| 6  | [Rate Limiting]()     | Control the rate of requests sent or received by an API                                                   |
-| 7  | [Caching]()           | Store data in a cache to reduce the number of requests to an external service                             |
-| 8  | [Sharding]()          | Partition a database into smaller, faster, and more easily managed parts                                  |
-| 9  | [Leader Election]()   | Choose a leader from a group of distributed nodes                                                         |
-| 10 | [Health Check]()      | Monitor the health of a service or a system                                                               |
-| 11 | [Service Discovery]() | Automatically locate services in a distributed system                                                     |
-| 12 | [Circuit Breaker]()   | Detect failures and encapsulate the logic of preventing a failure from constantly recurring               |
-| 13 | [Broker]()            | Act as an intermediary for messages between two applications                                              |
-| 14 | [Sidecar]()           | Extend and enhance the functionality of an application without affecting the application itself           |
-| 15 | [Bulkhead]()          | Isolate elements of an application into pools so that if one fails, the others will continue to function  |
-
-# Microservices Patterns
-
-| # | Pattern                       | Description                                                                                  |
-|---|-------------------------------|----------------------------------------------------------------------------------------------|
-| 1 | [SAGA]()                      | A sequence of local transactions where each transaction updates data within a single service |
-| 2 | [2PC]()                       | A distributed transaction that ensures all-or-nothing semantics for a transaction            |
-| 3 | [Transactional Outbox]()      | A pattern that ensures exactly-once delivery of messages                                     |
-| 4 | [Event-driven architecture]() | A pattern that produces, detects, consumes, and reacts to events in a system                 |
+| #  | Pattern                  | Description                                                                                               |
+|----|--------------------------|-----------------------------------------------------------------------------------------------------------|
+| 1  | [Reverse Proxy]()        | Act as an intermediary for requests from clients seeking resources from servers                           |
+| 2  | [Load Balancer]()        | Distribute incoming network traffic across multiple servers to ensure that no single server is overworked |
+| 3  | [API Gateway]()          | Aggregate multiple services into a single API                                                             |
+| 4  | [Retry]()                | Retry a failed operation a certain number of times with a certain delay between retries                   |
+| 5  | [Timeout]()              | Limit the time a process or a thread is allowed to run                                                    |
+| 6  | [Rate Limiting]()        | Control the rate of requests sent or received by an API                                                   |
+| 7  | [Caching]()              | Store data in a cache to reduce the number of requests to an external service                             |
+| 8  | [Sharding]()             | Partition a database into smaller, faster, and more easily managed parts                                  |
+| 9  | [Leader Election]()      | Choose a leader from a group of distributed nodes                                                         |
+| 10 | [Health Check]()         | Monitor the health of a service or a system                                                               |
+| 11 | [Service Discovery]()    | Automatically locate services in a distributed system                                                     |
+| 12 | [Circuit Breaker]()      | Detect failures and encapsulate the logic of preventing a failure from constantly recurring               |
+| 13 | [Broker]()               | Act as an intermediary for messages between two applications                                              |
+| 14 | [Sidecar]()              | Extend and enhance the functionality of an application without affecting the application itself           |
+| 15 | [Bulkhead]()             | Isolate elements of an application into pools so that if one fails, the others will continue to function  |
+| 16 | [SAGA]()                 | A sequence of local transactions where each transaction updates data within a single service              |
+| 17 | [2PC]()                  | A distributed transaction that ensures all-or-nothing semantics for a transaction                         |
+| 18 | [Transactional Outbox]() | A pattern that ensures exactly-once delivery of messages                                                  |

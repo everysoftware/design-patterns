@@ -1,7 +1,7 @@
 from _pytest.logging import LogCaptureFixture
 
-from src.infrastructure.client_server import Client, Server
-from src.infrastructure.reverse_proxy import ReverseProxy
+from src.microservices.client_server import Client, Server
+from src.microservices.reverse_proxy import ReverseProxy
 
 
 def test_client_server() -> None:

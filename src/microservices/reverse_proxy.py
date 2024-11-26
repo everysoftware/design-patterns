@@ -9,7 +9,7 @@ it receives requests from clients and forwards them to the appropriate servers.
 import logging
 from typing import Any
 
-from src.infrastructure.client_server import IServer, RequestType
+from src.microservices.client_server import IServer, RequestType
 
 logger = logging.getLogger(__name__)
 
