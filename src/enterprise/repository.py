@@ -57,9 +57,9 @@ See more: https://dzone.com/articles/differences-between-repository-and-dao
 """
 
 from abc import ABC, abstractmethod
-from typing import Any
 
 from src.enterprise.domain_model import User
+from src.enterprise.specification import Specification
 
 
 class UserRepository(ABC):
@@ -73,4 +73,36 @@ class UserRepository(ABC):
     def delete(self, user: User) -> None: ...
 
     @abstractmethod
-    def find(self, specification: Any) -> User | None: ...
+    def find(self, specification: Specification[User]) -> User | None: ...
+
+
+class MemoryUserRepository(UserRepository):
+    def __init__(self) -> None:
+        self.users: list[User] = []
+
+    def add(self, user: User) -> None:
+        self.users.append(user)
+
+    def get(self, id: int) -> User | None:
+        """
+        This equivalent to the following code::
+
+            for user in self.users:
+                if user.id == id:
+                    return user
+            return None
+        """
+        return next((user for user in self.users if user.id == id), None)
+
+    def delete(self, user: User) -> None:
+        self.users.remove(user)
+
+    def find(self, specification: Specification[User]) -> User | None:
+        return next(
+            (
+                user
+                for user in self.users
+                if specification.is_satisfied_by(user)
+            ),
+            None,
+        )

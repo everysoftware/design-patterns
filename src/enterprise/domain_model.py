@@ -11,15 +11,21 @@ of encapsulation.
 """
 
 import hashlib
-from dataclasses import dataclass
+import uuid
+from dataclasses import dataclass, field
 
 
 @dataclass
-class User:
-    id: int
+class Entity:
+    id: int = field(default_factory=lambda: uuid.uuid4().int)
+
+
+@dataclass(kw_only=True)
+class User(Entity):
     name: str
     email: str
     hashed_password: str
+    is_active: bool = True
 
     def verify_password(self, password: str) -> bool:
         return (
@@ -27,5 +33,5 @@ class User:
             == self.hashed_password
         )
 
-    def hash_password(self, password: str) -> None:
+    def set_password(self, password: str) -> None:
         self.hashed_password = hashlib.sha256(password.encode()).hexdigest()
