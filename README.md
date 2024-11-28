@@ -82,6 +82,10 @@ repository contains a collection of design patterns, principles, and best practi
 | 13 | [Retry]()                   | Retry a failed operation a certain number of times with a certain delay between retries                                                                                                                           |
 | 14 | [Servant]()                 | Create a class that performs specific actions for a group of other classes without being part of them                                                                                                             |
 | 15 | [Session]()                 | Define an object that acts as a container for storing data or state required to perform various operations within a single session                                                                                |
+| 16 | [Generator]()               | Generate objects in a way that allows the client to control the generation process                                                                                                                                |
+| 17 | [Timeout]()                 | Limit the time a process or a thread is allowed to run                                                                                                                                                            |
+| 18 | [Caching]()                 | Store data in a cache to reduce the number of requests to an external service                                                                                                                                     |
+| 19 | [Throttling]()              | Control the rate of requests sent or received by a service                                                                                                                                                        |
 
 ## Enterprise patterns
 
@@ -122,23 +126,21 @@ repository contains a collection of design patterns, principles, and best practi
 
 ## Microservices Patterns
 
-| #  | Pattern                  | Description                                                                                               |
-|----|--------------------------|-----------------------------------------------------------------------------------------------------------|
-| 1  | [Reverse Proxy]()        | Act as an intermediary for requests from clients seeking resources from servers                           |
-| 2  | [Load Balancer]()        | Distribute incoming network traffic across multiple servers to ensure that no single server is overworked |
-| 3  | [API Gateway]()          | Aggregate multiple services into a single API                                                             |
-| 4  | [Retry]()                | Retry a failed operation a certain number of times with a certain delay between retries                   |
-| 5  | [Timeout]()              | Limit the time a process or a thread is allowed to run                                                    |
-| 6  | [Rate Limiting]()        | Control the rate of requests sent or received by an API                                                   |
-| 7  | [Caching]()              | Store data in a cache to reduce the number of requests to an external service                             |
-| 8  | [Sharding]()             | Partition a database into smaller, faster, and more easily managed parts                                  |
-| 9  | [Leader Election]()      | Choose a leader from a group of distributed nodes                                                         |
-| 10 | [Health Check]()         | Monitor the health of a service or a system                                                               |
-| 11 | [Service Discovery]()    | Automatically locate services in a distributed system                                                     |
-| 12 | [Circuit Breaker]()      | Detect failures and encapsulate the logic of preventing a failure from constantly recurring               |
-| 13 | [Broker]()               | Act as an intermediary for messages between two applications                                              |
-| 14 | [Sidecar]()              | Extend and enhance the functionality of an application without affecting the application itself           |
-| 15 | [Bulkhead]()             | Isolate elements of an application into pools so that if one fails, the others will continue to function  |
-| 16 | [SAGA]()                 | A sequence of local transactions where each transaction updates data within a single service              |
-| 17 | [2PC]()                  | A distributed transaction that ensures all-or-nothing semantics for a transaction                         |
-| 18 | [Transactional Outbox]() | A pattern that ensures exactly-once delivery of messages                                                  |
+| #  | Pattern                      | Description                                                                                               |
+|----|------------------------------|-----------------------------------------------------------------------------------------------------------|
+| 1  | [Reverse Proxy]()            | Act as an intermediary for requests from clients seeking resources from servers                           |
+| 2  | [Load Balancer]()            | Distribute incoming network traffic across multiple servers to ensure that no single server is overworked |
+| 3  | [API Gateway]()              | Aggregate multiple services into a single API                                                             |
+| 4  | [Broker]()                   | Act as an intermediary for messages between two applications                                              |
+| 5  | [SAGA]()                     | A sequence of local transactions where each transaction updates data within a single service              |
+| 6  | [2PC]()                      | A distributed transaction that ensures all-or-nothing semantics for a transaction                         |
+| 7  | [Transactional Outbox]()     | A pattern that ensures exactly-once delivery of messages                                                  |
+| 8  | [Compensating Transaction]() | A pattern that undoes the work of a failed transaction                                                    |
+| 9  | [Sharding]()                 | Partition a database into smaller, faster, and more easily managed parts                                  |
+| 10 | [Service Discovery]()        | Automatically locate services in a distributed system                                                     |
+| 11 | [Health Check]()             | Monitor the health of a service or a system                                                               |
+| 12 | [Circuit Breaker]()          | Detect failures and encapsulate the logic of preventing a failure from constantly recurring               |
+| 13 | [Leader Election]()          | Choose a leader from a group of distributed nodes                                                         |
+| 14 | [Sidecar]()                  | Extend a service's functionality without changing the service itself                                      |
+| 15 | [Bulkhead]()                 | Isolate elements of an application into pools so that if one fails, the others will continue to function  |
+| 16 | [Back Pressure]()            | Control the rate of data transfer between two systems                                                     |

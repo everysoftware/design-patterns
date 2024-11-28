@@ -1,4 +1,6 @@
 """
+Generator is a design pattern to generate objects in a way that allows the client to control the generation process.
+
 Conceptually, an iterator is a mechanism for traversing data element by element, while a generator allows you to
 lazily create a result during iteration.
 
