@@ -3,44 +3,39 @@ Iterator is a behavioral design pattern that provides a way to access the elemen
 without exposing its underlying representation.
 """
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
-from typing import Any, Sequence, Self
+from typing import Sequence, Self
 
 
-class Iterator(ABC):
+class Iterable[T](ABC):
     @abstractmethod
-    def __next__(self) -> Any: ...
-    @abstractmethod
-    def has_next(self) -> bool: ...
-    @abstractmethod
-    def __iter__(self) -> Self: ...
+    def __iter__(self) -> Iterator[T]: ...
 
 
-class NameIterator(Iterator):
+class Iterator[T](Iterable[T], ABC):
+    @abstractmethod
+    def __next__(self) -> T: ...
+
+
+class NameIterator(Iterator[str]):
     def __init__(self, names: Sequence[str]) -> None:
         self._names = names
         self._position = 0
 
     def __next__(self) -> str:
-        if not self.has_next():
+        if not self._position < len(self._names):
             raise StopIteration
         name = self._names[self._position]
         self._position += 1
         return name
 
-    def has_next(self) -> bool:
-        return self._position < len(self._names)
-
     def __iter__(self) -> Self:
         return self
 
 
-class Iterable(ABC):
-    @abstractmethod
-    def __iter__(self) -> Iterator: ...
-
-
-class NameCollection(Iterable):
+class NameCollection(Iterable[str]):
     def __init__(self) -> None:
         self._names: list[str] = []
 

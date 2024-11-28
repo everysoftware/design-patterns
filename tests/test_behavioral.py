@@ -1,5 +1,22 @@
+import io
+import sqlite3
+from typing import Generator as PythonGenerator
+
+import pytest
+
 from src.behavioral.command import Bank, Account
 from src.behavioral.cor import LeaveRequest, Manager, Director, TeamLead
+from src.behavioral.generator import (
+    gen_pow,
+    gen_pow_delegation,
+    count,
+    count_delegation,
+    gen_sum,
+    SumGenerator,
+    gen_line,
+    db_session,
+    CommitException,
+)
 from src.behavioral.interpreter import Subtract, Number, Add
 from src.behavioral.iterator import NameCollection
 from src.behavioral.mediator import ChatRoom, Participant
@@ -258,3 +275,78 @@ def test_observer() -> None:
     sensor.set_temperature(18)
     assert ac.temperature == 18
     assert heater.temperature == 18
+
+
+def test_gen_pow() -> None:
+    g = gen_pow(2)
+    assert next(g) == 1
+    assert next(g) == 2
+    assert next(g) == 4
+    assert next(g) == 8
+    with pytest.raises(StopIteration):
+        next(g)
+
+    assert list(gen_pow(2)) == [1, 2, 4, 8]
+    assert list(gen_pow(2)) == list(gen_pow_delegation(2))
+    assert list(count(3)) == [0, 1, 2]
+    assert list(count(3)) == list(count_delegation(3))
+
+
+@pytest.mark.parametrize(
+    "impl",
+    [
+        gen_sum,
+        SumGenerator,
+    ],
+)
+def test_gen_sum(impl: type[PythonGenerator[int, int, int]]) -> None:
+    g = impl()
+
+    assert next(g) == 0
+    # SendT == int, YieldT == int
+    assert g.send(1) == 1
+    assert g.send(2) == 3
+    assert g.send(3) == 6
+    assert g.send(4) == 10
+    assert g.send(5) == 15
+    g.close()
+    with pytest.raises(StopIteration) as e:
+        next(g)
+        # ReturnT == int
+        assert e.value.value == 15
+
+
+def test_gen_line() -> None:
+    # A file-like object
+    output = io.StringIO()
+    output.write("First line\n")
+    output.write("Second line\n")
+    output.write("Third line\n")
+    output.seek(0)
+    state = {"closed": False}
+
+    g = gen_line(output, state)
+    assert next(g) == "First line"
+    assert next(g) == "Second line"
+    assert next(g) == "Third line"
+    g.close()
+
+
+def test_db_session() -> None:
+    db_url = ":memory:"
+    conn = sqlite3.connect(db_url)
+    with conn:
+        conn.execute("CREATE TABLE test (id INTEGER PRIMARY KEY)")
+
+    session = db_session(conn, "INSERT INTO test VALUES (?)")
+    next(session)
+    session.send((12,))
+    session.send((42,))
+    session.send((96,))
+    session.throw(CommitException)
+
+    with conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM test")
+        rows = cursor.fetchall()
+        assert rows == [(12,), (42,), (96,)]
