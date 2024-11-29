@@ -1,4 +1,3 @@
-import io
 import sqlite3
 from typing import Generator as PythonGenerator
 
@@ -13,7 +12,6 @@ from src.behavioral.generator import (
     count_delegation,
     gen_sum,
     SumGenerator,
-    gen_line,
     db_session,
     CommitException,
 )
@@ -314,22 +312,6 @@ def test_gen_sum(impl: type[PythonGenerator[int, int, int]]) -> None:
         next(g)
         # ReturnT == int
         assert e.value.value == 15
-
-
-def test_gen_line() -> None:
-    # A file-like object
-    output = io.StringIO()
-    output.write("First line\n")
-    output.write("Second line\n")
-    output.write("Third line\n")
-    output.seek(0)
-    state = {"closed": False}
-
-    g = gen_line(output, state)
-    assert next(g) == "First line"
-    assert next(g) == "Second line"
-    assert next(g) == "Third line"
-    g.close()
 
 
 def test_db_session() -> None:

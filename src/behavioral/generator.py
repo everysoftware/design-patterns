@@ -11,29 +11,12 @@ iterable, so you can use it in for loops and pass it to any function that expect
 
 from __future__ import annotations
 
-import io
 from abc import ABC, abstractmethod
 from sqlite3 import Connection
 from types import TracebackType
 from typing import Any, Self, Generator as PythonGenerator
 
 from src.behavioral.iterator import Iterator
-
-
-class Generator[YieldT, SendT, ReturnT](Iterator[YieldT], ABC):
-    @abstractmethod
-    def send(self, value: SendT) -> YieldT: ...
-
-    @abstractmethod
-    def throw(
-        self,
-        exc_type: type[BaseException],
-        exc_val: BaseException | None = None,
-        tb: TracebackType | None = None,
-    ) -> Self: ...
-
-    @abstractmethod
-    def close(self) -> None: ...
 
 
 # Basic usage
@@ -72,7 +55,48 @@ def gen_sum() -> PythonGenerator[int, int, int]:
             return total
 
 
+class CommitException(Exception):
+    pass
+
+
+class AbortException(Exception):
+    pass
+
+
+def db_session(
+    db: Connection, sql: str
+) -> PythonGenerator[None, tuple[Any, ...], None]:
+    cursor = db.cursor()
+    try:
+        while True:
+            try:
+                row = yield
+                cursor.execute(sql, row)
+            except CommitException:
+                db.commit()
+            except AbortException:
+                db.rollback()
+    finally:
+        db.rollback()
+
+
 # Class-based generator
+
+
+class Generator[YieldT, SendT, ReturnT](Iterator[YieldT], ABC):
+    @abstractmethod
+    def send(self, value: SendT) -> YieldT: ...
+
+    @abstractmethod
+    def throw(
+        self,
+        exc_type: type[BaseException],
+        exc_val: BaseException | None = None,
+        tb: TracebackType | None = None,
+    ) -> Self: ...
+
+    @abstractmethod
+    def close(self) -> None: ...
 
 
 class SumGenerator(Generator[int, int, int]):
@@ -102,43 +126,3 @@ class SumGenerator(Generator[int, int, int]):
 
     def __next__(self) -> int:
         return self.send(0)
-
-
-def gen_line(
-    output: io.StringIO, state: dict[str, Any]
-) -> PythonGenerator[str, None, None]:
-    # lines
-    try:
-        while True:
-            line = output.readline().rstrip()
-            if not line:
-                break
-            yield line
-    finally:
-        state["closed"] = True
-        output.close()
-
-
-class CommitException(Exception):
-    pass
-
-
-class AbortException(Exception):
-    pass
-
-
-def db_session(
-    db: Connection, sql: str
-) -> PythonGenerator[None, tuple[Any, ...], None]:
-    cursor = db.cursor()
-    try:
-        while True:
-            try:
-                row = yield
-                cursor.execute(sql, row)
-            except CommitException:
-                db.commit()
-            except AbortException:
-                db.rollback()
-    finally:
-        db.rollback()
