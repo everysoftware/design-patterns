@@ -10,9 +10,10 @@ repository contains a collection of design patterns, principles, and best practi
 2. Creational Patterns
 3. Structural Patterns
 4. Behavioral Patterns
-5. Enterprise Patterns
-6. Architectural Approaches
-7. Microservices Patterns
+5. Concurrency Patterns
+6. Enterprise Patterns
+7. Architectural Approaches
+8. Microservices Patterns
 
 ## Principles of Design
 
@@ -86,6 +87,17 @@ repository contains a collection of design patterns, principles, and best practi
 | 17 | [Timeout]()                 | Limit the time a process or a thread is allowed to run                                                                                                                                                            |
 | 18 | [Caching]()                 | Store data in a cache to reduce the number of requests to an external service                                                                                                                                     |
 | 19 | [Throttling]()              | Control the rate of requests sent or received by a service                                                                                                                                                        |
+
+## Concurrency Patterns
+
+| # | Pattern        | Description                                                                                                             |
+|---|----------------|-------------------------------------------------------------------------------------------------------------------------|
+| 1 | [Future]()     | A pattern that represents the result of an asynchronous operation                                                       |
+| 2 | [Coroutine]()  | A pattern that allows a function to be paused and resumed at a later time without blocking the execution of the program |
+| 3 | [Event Loop]() | A pattern that waits for and dispatches events or messages in a program                                                 |
+| 4 | [Mutex]()      | A pattern that ensures that only one thread can access a resource at a time                                             |
+| 6 | [Semaphore]()  | A pattern that restricts the number of threads that can access a resource at a time                                     |
+| 7 | [Barrier]()    | A pattern that allows multiple threads to wait for each other at a predefined point in the program                      |
 
 ## Enterprise patterns
 
