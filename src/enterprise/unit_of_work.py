@@ -106,7 +106,6 @@ class MemoryUnitOfWork(UnitOfWork):
 
     def rollback(self) -> None:
         self._source.rollback()
-        self._identity_map.clear()
         self._new.clear()
         self._dirty.clear()
         self._removed.clear()
