@@ -113,10 +113,7 @@ repository contains a collection of design patterns, principles, and best practi
 | 8  | [Specification]()        | Recombinable business logic in a boolean fashion. Specification is a pattern that allows you to combine rules to create more complex rules, which you can use to filter objects |
 | 9  | [Identity Map]()         | Ensure that each object gets loaded only once by keeping every loaded object in a map. Looks up objects using the map when referring to them                                    |
 | 10 | [Unit of Work]()         | Maintain a list of objects affected by a business transaction and coordinates the writing out of changes and the resolution of concurrency problems                             |
-| 11 | [Service Layer]()        | Define an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response                             |
-| 12 | [Data Transfer Object]() | An object that carries data between processes. The data transfer object is not tied to any specific operation and does not have any behavior                                    |
-| 13 | [Materialized View]()    | Store the results of a database query as a physical table to improve performance                                                                                                |
-| 14 | [Index Table]()          | Store the results of a database query as an index table to improve performance                                                                                                  |
+| 11 | [Data Transfer Object]() | An object that carries data between processes. The data transfer object is not tied to any specific operation and does not have any behavior                                    |
 
 ## Architectural Approaches
 

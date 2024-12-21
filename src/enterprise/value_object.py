@@ -2,12 +2,6 @@
 Value Object is an enterprise design pattern that is used to represent objects that are characterized by their state
 (value) rather than identity. This pattern is used to model simple entities that have a value
 and do not have an identity of their own.
-
-Basics:
-* Value-based: Two objects are considered equal if all their attributes are equal.
-* Immutability: Value Objects are usually immutable once created.
-* Modeling Usage: Value Objects are used to model concepts that are easily defined by their attributes, such as money,
-addresses, coordinates, etc.
 """
 
 from __future__ import annotations

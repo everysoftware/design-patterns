@@ -2,15 +2,6 @@
 Specification is an enterprise design pattern that use to describe recombinable business logic in a boolean fashion.
 Moreover, this pattern that allows you to combine rules to create more complex rules, which you can use to filter
 objects
-
-Use cases:
-1. Finding data in the database. This is finding records that match certain criteria.
-2. Checking objects in memory. In other words, checking that the object we retrieved from the DB matches the
-specification.
-3. Creating a new instance that matches the criteria. This is useful in cases where you don't care about the actual
-contents of the instances, but still need to have certain attributes.
-
-See more: https://jopr-site.azureedge.net/blog/detail/spetsifikatsiya-pattern-proektirovaniya
 """
 
 from __future__ import annotations
