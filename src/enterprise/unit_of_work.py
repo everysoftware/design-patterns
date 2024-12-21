@@ -59,7 +59,6 @@ class MemoryUnitOfWork(UnitOfWork):
         self._new: list[Entity] = []
         self._dirty: list[Entity] = []
         self._removed: list[Entity] = []
-        self._all: dict[str, dict[int, Entity]] = {}
 
     @property
     def source(self) -> DataSource:
@@ -76,7 +75,6 @@ class MemoryUnitOfWork(UnitOfWork):
         if data is None:
             return None
         entity = entity_type(**data)  # noqa
-        self._all.setdefault(entity_type.__name__, {})[id] = entity
         return entity
 
     def update(self, model: Entity) -> None:
@@ -108,6 +106,7 @@ class MemoryUnitOfWork(UnitOfWork):
 
     def rollback(self) -> None:
         self._source.rollback()
+        self._identity_map.clear()
         self._new.clear()
         self._dirty.clear()
         self._removed.clear()
