@@ -97,7 +97,7 @@ class MemoryUnitOfWork(UnitOfWork):
             self._source.insert(model.__class__.__name__, model.__dict__)
 
         for model in self._dirty:
-            self._source.insert(model.__class__.__name__, model.__dict__)
+            self._source.update(model.__class__.__name__, model.__dict__)
 
         for model in self._removed:
             self._source.delete(model.__class__.__name__, model.id)
