@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "patterns"
+name = "src"
 version = "0.1.0"
 description = ""
 authors = ["everysoftware <pravitel2015ify@gmail.com>"]
