@@ -105,78 +105,53 @@ objects.
 
 ## Data Access Object
 
+> **Data Access Object** (DAO) pattern comes from **early enterprise application design**, and its
+> formalization can be found in the book "Core J2EE Patterns: Best Practices and Design Strategies" by Deepak Alur, John
+> Crupi, and Dan Malks, published in 2001. DAO abstracts and encapsulates all access to a data source, separating
+> persistence logic from business logic. This allows changes to the underlying data source without affecting the rest of
+> the application, which is especially useful in enterprise contexts where systems might switch databases or data
+> storage
+> mechanisms over time.
+
 **DAO** (Data Access Object) is an enterprise pattern that is used as abstraction of data persistence.
 
 ## Repository
 
+> The **Repository** pattern originates from **Domain-Driven Design** (DDD), as described by Eric Evans in his book, "
+> Domain-Driven Design: Tackling Complexity in the Heart of Software." (2003) Repositories are not just about managing
+> data; they encapsulate business logic, ensuring that operations adhere to the Ubiquitous Language of the domain.
+
 **Repository** is an enterprise pattern that mediates between the domain and persistence layers using a collection-like
 interface for accessing domain objects.
 
-### Collection-oriented vs Persistence-oriented
-
-* **Collection-oriented**: can be thought as an in-memory set of entities which can track object changes.
+* **Collection-like repository**: can be thought as an in-memory set of entities which can track object changes.
   Usually, you deal with this kind of repository when you are working with SQL databases and an ORM.
 
-* **Persistence-oriented**: as a list or table of entities where you cannot track their changes.
+* **Persistence-oriented repository**: as a list or table of entities where you cannot track their changes.
   Persistence-oriented repositories are more common in document (NoSQL) databases and an ODM.
 
-### Use Specific repositories instead of Generic
+Best practices:
 
-E.g. UserRepository vs Repository[User]
+1. **Don't use generic repository**. Generic repository is an a priori anti-pattern, since the repository encapsulates
+   the logic of storing aggregates,
+   not a specific domain model. However, it is allowed to move the general functionality to the base class.
+2. **Manage transactions outside the repository**. The transaction management can not be the responsibility of the
+   repository. It is the responsibility of the client
+   code to manage transactions.
+3. **Focus on aggregates, not entities**. E.g. you can't save Order and OrderItem separately, because they are part of
+   the
+   same aggregate. Otherwise, you might end up with inconsistent data.
 
-**Generic repository** is an a priori anti-pattern, since the repository encapsulates the logic of storing aggregates,
-not a specific domain model. However, it is allowed to move the general functionality to the base class.
-
-### Manage transactions outside the repository
-
-The transaction management can not be the responsibility of the repository. It is the responsibility of the client
-code to manage transactions. Therefore, repositories controlling transaction are considered an anti-pattern.
-
-### Use Aggregate-centred repository instead of Model-centred
-
-E.g. OrderRepository vs OrderRepository+OrderItemRepository
-
-* **Aggregate-centred** repository is the only correct approach. Order should be able to save the whole aggregate
-  at once. This way, you can ensure that the aggregate is always consistent.
-
-* **Model-centred** repository is considered an anti-pattern. The trouble with this approach is that it doesn't take
-  into account the consistency boundaries. You can't save Order and OrderItem separately, because they are part of the
-  same aggregate. Otherwise, you might end up with inconsistent data.
-
-If you have a simple business logic, you might not need to use the repository pattern at all since there
-is DAO pattern that can be used to access the database directly.
-
-### Repository vs ORM Session
-
-**ORM Session** is more about data access, while **Repository** is more about business logic.
-Repository may include pagination, filtering, caching, and other business logic, while ORM Session is more about
-CRUD operations.
-
-### Repository vs Data Access Object
-
-The **Repository** pattern originates from **Domain-Driven Design** (DDD), as described by Eric Evans in his book, "
-Domain-Driven Design: Tackling Complexity in the Heart of Software." (2003) Repositories are not just about managing
-data; they
-encapsulate business logic, ensuring that operations adhere to the Ubiquitous Language of the domain.
-
-On the other hand, the **Data Access Object** (DAO) pattern comes from **early enterprise application design**, and its
-formalization can be found in the book "Core J2EE Patterns: Best Practices and Design Strategies" by Deepak Alur, John
-Crupi, and Dan Malks, published in 2001. DAO abstracts and encapsulates all access to a data source, separating
-persistence logic from business logic. This allows changes to the underlying data source without affecting the rest of
-the application, which is especially useful in enterprise contexts where systems might switch databases or data storage
-mechanisms over time.
-
-The primary distinction between Repository and DAO lies in the semantics of the API they expose:
-
-* **DAO**: DAO is data-centric, providing database operations such as insert, update, delete, and find. These methods
-  directly map to database actions, focusing on how data is stored and retrieved.
-* **Repository**: This is domain-driven and aligns with the business logic. It represents a collection of aggregate
-  roots
-  or entities. Instead of database operations, repositories offer operations that reflect the domain language. For
-  instance, in a hotel system, a Repository might provide checkIn, checkout, or checkReservation, abstracting away the
-  actual data operations.
-
-Repository could be implemented using DAO's, but you wouldn't do the opposite.
+| Criterion                  | Repository                                            | Data Access Object (DAO)                           | ORM Session                                         |
+|----------------------------|-------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------|
+| **Main Idea**              | Abstraction over a collection of domain model objects | Abstraction for working with a data source         | Object managing ORM transactions and sessions       |
+| **Level of Abstraction**   | High (works with domain objects)                      | Medium (works with database objects)               | Low (works with specific SQL queries via ORM)       |
+| **ORM Dependency**         | Not tied to ORM (but can use it)                      | Can use ORM, JDBC, ADO.NET, and other technologies | Part of ORM (e.g., SQLAlchemy, Hibernate)           |
+| **Focus**                  | Business logic and working with aggregates            | Encapsulation of CRUD operations                   | Managing connections and transactions               |
+| **Where Used**             | DDD (Domain-Driven Design), complex systems           | Smaller projects, clean architecture               | ORM frameworks (SQLAlchemy, Hibernate)              |
+| **Flexibility**            | High, can switch between data sources                 | Medium, requires adaptation for a data source      | Low, tightly coupled with ORM                       |
+| **Ease of Testing**        | High, easily mockable                                 | Medium, testing is possible                        | Low, requires mocks or a test database              |
+| **Example Implementation** | `UserRepository.get_active_users()`                   | `UserDAO.get_user_by_id(id)`                       | `session.query(User).filter(User.id == id).first()` |
 
 ## Specification
 

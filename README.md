@@ -12,8 +12,6 @@ repository contains a collection of design patterns, principles, and best practi
 4. Behavioral Patterns
 5. Concurrency Patterns
 6. Enterprise Patterns
-7. Architectural Approaches
-8. Microservices Patterns
 
 ## Principles of Design
 
